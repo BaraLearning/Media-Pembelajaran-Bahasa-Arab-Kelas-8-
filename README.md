@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Bahasa Arab Kelas 8</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- PENGATURAN TEMA WARNA --- */
+        :root {
+            --primary: #006D77;    /* Turquoise Gelap */
+            --secondary: #E29578;  /* Gold/Mustard Aksen */
+            --bg-color: #FF0000;   /* Warna Background Merah (ini akan ditimpa oleh gambar latar belakang) */
+            --text-dark: #2C3E50;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color); /* Fallback color jika gambar gagal dimuat */
+            color: var(--text-dark);
+            
+            /* --- Background Bergerak dengan Gambar Alam --- */
+            background-image: url('https://source.unsplash.com/1600x900/?nature,landscape'); /* Ganti dengan URL gambar alam Anda */
+            background-size: 120% 120%; /* Sedikit lebih besar dari layar untuk memungkinkan pergerakan */
+            background-position: center center;
+            background-repeat: no-repeat;
+            animation: moveBackground 30s linear infinite alternate; /* Pergerakan lambat, bolak-balik */
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .arab {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.5em; 
+            direction: rtl;
+            line-height: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* --- GRID MENU UTAMA --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+
+        @media (min-width: 992px) {
+            .menu-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .menu-card {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 5px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 170px;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+            color: var(--white);
+            border-bottom-color: var(--secondary);
+        }
+
+        .menu-card:hover .menu-icon {
+             transform: scale(1.2);
+        }
+
+        .menu-card:hover .menu-arab {
+            color: var(--secondary);
+        }
+
+        .menu-icon {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.2;
+        }
+
+        .menu-arab {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        /* --- HALAMAN KONTEN --- */
+        .page {
+            display: none;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease;
+            min-height: 400px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--secondary);
+        }
+
+        .btn-home {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-home:hover {
+            background: #c57d63;
+        }
+
+        /* --- STYLE BARU UNTUK DAFTAR TUJUAN --- */
+        .tujuan-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .tujuan-list li {
+            display: flex;
+            align-items: flex-start;
+            background: #f8fafd;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--secondary);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        .tujuan-list li:hover {
+             transform: translateX(5px);
+             background: #fff;
+        }
+        .tujuan-list li .icon-symbol {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            min-width: 40px;
+            text-align: center;
+        }
+        .tujuan-list li .text-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+        }
+        .tujuan-list li .text-content strong {
+            color: var(--primary);
+        }
+
+        /* --- STYLE KHUSUS UNTUK SUB-MENU MATERI --- */
+        .submenu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .btn-materi {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border: 2px solid #eee;
+            border-left: 5px solid var(--primary);
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .btn-materi:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        .btn-materi:hover .text-group .title,
+        .btn-materi:hover .text-group .arab-subtitle {
+             color: white;
+        }
+        .btn-materi .icon-box {
+            font-size: 2.5rem;
+            margin-right: 20px;
+            width: 60px;
+            text-align: center;
+        }
+        .text-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .text-group .title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        .text-group .arab-subtitle {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-top: 2px;
+        }
+
+        /* --- STYLE UNTUK UTS/UAS --- */
+        .quiz-start {
+            text-align: center;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border: 2px solid #eee;
+        }
+        .btn-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        .btn-link:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* --- STYLE TIM --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .team-member {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background: #fafafa;
+            transition: transform 0.3s ease;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="dashboard">
+            <header>
+                <h1>ARABIYA KELAS 8</h1>
+                <p>Media Pembelajaran Bahasa Arab Interaktif MTs</p>
+            </header>
+
+            <div class="menu-grid">
+                <div class="menu-card" onclick="openPage('page-tujuan')">
+                    <div class="menu-icon">🎯</div>
+                    <div class="menu-title">Tujuan Pembelajaran</div>
+                    <div class="menu-arab">أهداف التعلم</div>
+                </div>
+                <div class="menu-card" onclick="openPage('page-bab1')">
+                    <div class="menu-icon">⏰</div>
+                    <div class="menu-title">Bab 1: Jam</div>
+                    <div class="menu-arab">السَّاعَةُ</div>
+                </div>
+                <div class="menu-card" onclick="openPage('page-bab2')">
+                    <div class="menu-icon">📅</div>
+                    <div class="menu-title">Bab 2: Keseharian</div>
+                    <div class="menu-arab">يَوْمِيَّاتُنَا</div>
+                </div>
+                <div class="menu-card" onclick="openPage('page-bab3')">
+                    <div class="menu-icon">🎨</div>
+                    <div class="menu-title">Bab 3: Hobi</div>
+                    <div class="menu-arab">الْهِوَايَةُ</div>
+                </div>
+                <div class="menu-card" onclick="openPage('page-bab4')">
+                    <div class="menu-icon">🏆</div>
+                    <div class="menu-title">Bab 4: Olahraga</div>
+                    <div class="menu-arab">الرِّيَاضَةُ</div>
+                </div>
+
+                <div class="menu-card" onclick="openPage('page-uts')">
+                    <div class="menu-icon">📝</div>
+                    <div class="menu-title">Evaluasi Tengah Semester</div>
+                    <div class="menu-arab">الاِخْتِبَارُ النِّصْفِيُّ</div>
+                </div>
+                <div class="menu-card" onclick="openPage('page-bab5')">
+                    <div class="menu-icon">💼</div>
+                    <div class="menu-title">Bab 5: Profesi</div>
+                    <div class="menu-arab">الْمِهْنَةُ</div>
+                </div>
+                <div class="menu-card" onclick="openPage('page-bab6')">
+                    <div class="menu-icon">🏥</div>
+                    <div class="menu-title">Bab 6: Menjenguk</div>
+                    <div class="menu-arab">عِيَادَةُ الْمَرِيْضِ</div>
+                </div>
+                 <div class="menu-card" onclick="openPage('page-uas')">
+                    <div class="menu-icon">🎓</div>
+                    <div class="menu-title">Evaluasi Akhir Semester</div>
+                    <div class="menu-arab">الاِخْتِبَارُ النِّهَائِيُّ</div>
+                </div>
+                <div class="menu-card" onclick="openPage('page-tim')">
+                    <div class="menu-icon">👥</div>
+                    <div class="menu-title">Tentang Kami</div>
+                    <div class="menu-arab">فَرِيْقُ الْعَمَلِ</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-tujuan" class="page">
+            <div class="page-header">
+                <h2>🎯 Tujuan Pembelajaran</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="content">
+                <p style="text-align: center; font-size: 1.1rem; opacity: 0.8;">Setelah mengikuti kegiatan pembelajaran, siswa diharapkan:</p>
+                
+                <ul class="tujuan-list">
+                    <li>
+                        <div class="icon-symbol">🧠</div>
+                        <div class="text-content">
+                            Mampu <strong>memahami</strong> fungsi sosial, struktur teks dan unsur kebahasaan (bunyi, kata, dan makna) dari teks sederhana yang berkaitan dengan tema yang melibatkan tindak tutur membuat pilihan dan argumentasinya dengan memperhatikan susunan gramatikal <span class="arab">الْجُمْلَةُ الْفِعْلِيَّةُ</span>.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-symbol">🗣️</div>
+                        <div class="text-content">
+                            Mampu <strong>mendemonstrasikan</strong> tindak tutur membuat pilihan dan argumentasinya dengan memperhatikan susunan gramatikal <span class="arab">الْجُمْلَةُ الْفِعْلِيَّةُ</span> baik secara lisan maupun tulisan.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-symbol">🔍</div>
+                        <div class="text-content">
+                            Mampu <strong>menganalisis</strong> gagasan dari teks sederhana yang berkaitan dengan tema dengan memperhatikan bentuk, makna dan fungsi dari <span class="arab">الْجُمْلَةُ الْفِعْلِيَّةُ</span>.
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-symbol">📢</div>
+                        <div class="text-content">
+                            Mampu <strong>menyajikan</strong> hasil analisis gagasan dari teks sederhana yang berkaitan dengan tema dengan memperhatikan bentuk, makna dan fungsi dari susunan gramatikal tersebut.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="page-bab1" class="page">
+            <div class="page-header">
+                <h2>⏰ Bab 1: Jam (السَّاعَةُ)</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="content">
+                <h3>Pilih Kegiatan Belajar:</h3>
+                <div class="submenu-grid">
+                    <a href="https://drive.google.com/file/d/1KW4iDT8ogcqZnwN3L5rqKf_m7hDBI3HB/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">🗣️</div>
+                        <div class="text-group">
+                            <span class="title">Percakapan</span>
+                            <span class="arab-subtitle">الْحِوَارُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1ZcctFIlR7Wro5OaB_0c44x4hc6ejiyVA/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📚</div>
+                        <div class="text-group">
+                            <span class="title">Materi Pembelajaran</span>
+                            <span class="arab-subtitle">الْمَادَّةُ الدِّرَاسِيَّةُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1J5MpdvWt6m2ILJypUvyljR2RoHsSf3ih/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📖</div>
+                        <div class="text-group">
+                            <span class="title">Latihan Membaca</span>
+                            <span class="arab-subtitle">تَدْرِيْبُ الْقِرَاءَةِ</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-bab2" class="page">
+            <div class="page-header">
+                <h2>📅 Bab 2: Keseharian (يَوْمِيَّاتُنَا)</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="content">
+                <h3>Pilih Kegiatan Belajar:</h3>
+                <div class="submenu-grid">
+                    <a href="https://drive.google.com/file/d/1ecanpiQe-2hlesRq3Wu5CVddSxyUBSCJ/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📚</div>
+                        <div class="text-group">
+                            <span class="title">Materi</span>
+                            <span class="arab-subtitle">الْمَادَّةُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1Ux2a85o_QYLyJ9LUckn8sfEdZIj0R3db/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">🎧</div>
+                        <div class="text-group">
+                            <span class="title">Istima' (Mendengar)</span>
+                            <span class="arab-subtitle">الِاسْتِمَاعُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1rczHLy1zD937NDDQOOPPvfROqC3_P_gl/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📖</div>
+                        <div class="text-group">
+                            <span class="title">Bacaan</span>
+                            <span class="arab-subtitle">الْقِرَاءَةُ</span>
+                        </div>
+                    </a>
+                    <a href="https://www.proprofs.com/quiz-school/ugc/story.php?title=ndqxotu1mwydvr" target="_blank" class="btn-materi">
+                        <div class="icon-box">📝</div>
+                        <div class="text-group">
+                            <span class="title">Latihan Soal</span>
+                            <span class="arab-subtitle">التَّدْرِيْبَاتُ</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-bab3" class="page">
+            <div class="page-header">
+                <h2>🎨 Bab 3: Hobi (الْهِوَايَةُ)</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="content">
+                <h3>Pilih Kegiatan Belajar:</h3>
+                <div class="submenu-grid">
+                    <a href="https://drive.google.com/file/d/1nj2RaTA1xaIrIffHAg96wB_XcfBzbe3p/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📓</div>
+                        <div class="text-group">
+                            <span class="title">Mufrodat</span>
+                            <span class="arab-subtitle">الْمُفْرَدَاتُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1wzOHKyN5PmG783C1Lvs0dvfwm5urIy5N/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">🎧</div>
+                        <div class="text-group">
+                            <span class="title">Istima' (Mendengar)</span>
+                            <span class="arab-subtitle">الِاسْتِمَاعُ</span>
+                        </div>
+                    </a>
+                    <a href="https://tugaspopuo.my.canva.site/salinan-dari-latihan-soal-interaktif-tema-hobi-pilihan-ganda-susun-kata" target="_blank" class="btn-materi">
+                        <div class="icon-box">🧩</div>
+                        <div class="text-group">
+                            <span class="title">Quiz Interaktif</span>
+                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-bab4" class="page">
+            <div class="page-header">
+                <h2>🏆 Bab 4: Olahraga (الرِّيَاضَةُ)</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="content">
+                <h3>Pilih Kegiatan Belajar:</h3>
+                <div class="submenu-grid">
+                    <a href="https://drive.google.com/file/d/12n15GHgLfN0DIe0P2EOn5gOOmRQ1j13s/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📚</div>
+                        <div class="text-group">
+                            <span class="title">Materi</span>
+                            <span class="arab-subtitle">الْمَادَّةُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1yePy-BAc1zi8qfRPWzYmQv2VWAf_pfbw/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">🎬</div>
+                        <div class="text-group">
+                            <span class="title">Video Muhawaroh</span>
+                            <span class="arab-subtitle">فِيدِيُو الْمُحَاوَرَةِ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1mYfXp8Z9c7_ACH1E1ohbd1TZyx0o-cJI/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">🗣️</div>
+                        <div class="text-group">
+                            <span class="title">Hiwar dan Latihan</span>
+                            <span class="arab-subtitle">الْحِوَارُ وَالتَّدْرِيْبَاتُ</span>
+                        </div>
+                    </a>
+                    <a href="https://wayground.com/admin/quiz/68ef500bc6a73847ccb626d5" target="_blank" class="btn-materi">
+                        <div class="icon-box">🧩</div>
+                        <div class="text-group">
+                            <span class="title">Quiz</span>
+                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-bab5" class="page">
+            <div class="page-header">
+                <h2>💼 Bab 5: Profesi (الْمِهْنَةُ)</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="content">
+                <h3>Pilih Kegiatan Belajar:</h3>
+                <div class="submenu-grid">
+                    <a href="https://drive.google.com/file/d/1gjeJD79pCnucBe14dXeH1pn1IlyUCWsi/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📓</div>
+                        <div class="text-group">
+                            <span class="title">Mufrodat</span>
+                            <span class="arab-subtitle">الْمُفْرَدَاتُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1fX4Elqq9j5fB8eOZEfjgq4oQza9Vh4sx/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📖</div>
+                        <div class="text-group">
+                            <span class="title">'ibaaroh</span>
+                            <span class="arab-subtitle">عِبَارَةٌ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1fX4Elqq9j5fB8eOZEfjgq4oQza9Vh4sx/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">🗣️</div>
+                        <div class="text-group">
+                            <span class="title">Muhawaroh</span>
+                            <span class="arab-subtitle">مُحَاوَرَةٌ</span>
+                        </div>
+                    </a>
+                    <a href="https://www.liveworksheets.com/worksheet/ar/english-language-vocabulary/8281738" target="_blank" class="btn-materi">
+                        <div class="icon-box">🧩</div>
+                        <div class="text-group">
+                            <span class="title">Quiz</span>
+                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="page-bab6" class="page">
+            <div class="page-header">
+                <h2>🏥 Bab 6: Menjenguk (عِيَادَةُ الْمَرِيْضِ)</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="content">
+                <h3>Pilih Kegiatan Belajar:</h3>
+                <div class="submenu-grid">
+                    <a href="https://drive.google.com/file/d/10iQLdrt5tr8wyGP9srr0pjzszohdc2Eh/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📓</div>
+                        <div class="text-group">
+                            <span class="title">Mufrodat</span>
+                            <span class="arab-subtitle">الْمُفْرَدَاتُ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1Pg-o0AFVeVvSMEA5L79xOGBcFPfDBsss/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">📖</div>
+                        <div class="text-group">
+                            <span class="title">Latihan Membaca</span>
+                            <span class="arab-subtitle">تَدْرِيْبُ الْقِرَاءَةِ</span>
+                        </div>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1M5L8yL_NaSOy3ek5V-8aMBpPItGquI3O/view?usp=sharing" target="_blank" class="btn-materi">
+                        <div class="icon-box">🗣️</div>
+                        <div class="text-group">
+                            <span class="title">Percakapan</span>
+                            <span class="arab-subtitle">الْحِوَارُ</span>
+                        </div>
+                    </a>
+                    <a href="https://abrohman001.my.canva.site/latihansoal-kelas-8-bahasa-arab" target="_blank" class="btn-materi">
+                        <div class="icon-box">🧩</div>
+                        <div class="text-group">
+                            <span class="title">Quiz Interaktif</span>
+                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-uts" class="page">
+            <div class="page-header">
+                <h2>📝 Evaluasi Tengah Semester</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="quiz-start">
+                <span style="font-size: 4rem;">📝</span>
+                <h3>Siap Mengerjakan UTS?</h3>
+                <p>Silakan klik tombol di bawah ini untuk mulai mengerjakan soal.</p>
+                <a href="https://forms.gle/7xabn2bgt8QwxN9s7" target="_blank" class="btn-link">
+                    Ayo Kerjakan!
+                </a>
+            </div>
+        </div>
+
+        <div id="page-uas" class="page">
+            <div class="page-header">
+                <h2>🎓 Evaluasi Akhir Semester</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="quiz-start">
+                <span style="font-size: 4rem;">🎓</span>
+                <h3>Siap Mengerjakan UAS?</h3>
+                <p>Silakan klik tombol di bawah ini untuk mulai mengerjakan soal.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcvdmiY-F78uwSwRDQeFdYw8gieOZ8mSfMGfSludaFrC3diw/viewform?usp=publish-editor" target="_blank" class="btn-link">
+                    Ayo Kerjakan!
+                </a>
+            </div>
+        </div>
+
+        <div id="page-tim" class="page">
+            <div class="page-header">
+                <h2>👥 Tim Penyusun (Auditor)</h2>
+                <button class="btn-home" onclick="goHome()">🏠 Home</button>
+            </div>
+            <div class="team-grid">
+                 <div class="team-member">
+                    <div class="avatar">👨‍🎓</div>
+                    <h3>Ahmad Dzaky Mubarok</h3>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">NIM: 223121105</p>
+                    <a href="https://bara.ituaku.site" target="_blank" style="font-size: 0.8rem; color: var(--primary); text-decoration: none; display: block; margin-top: 5px;">bara.ituaku.site</a>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">👨‍🎓</div>
+                    <h3>Naufal Humam Wibobo</h3>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">NIM: 223121109</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">👩‍🎓</div>
+                    <h3>Siti Aisyah</h3>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">NIM: 223121099</p>
+                </div>
+                 <div class="team-member">
+                    <div class="avatar">👩‍🎓</div>
+                    <h3>Layla Tri Agustin</h3>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">NIM: 223121100</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function openPage(pageId) {
+            document.getElementById('dashboard').style.display = 'none';
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        function goHome() {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.style.display = 'none');
+            document.getElementById('dashboard').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
