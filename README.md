@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Media Pembelajaran Bahasa Arab Kelas 8</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -10,7 +11,7 @@
         :root {
             --primary: #006D77;    /* Turquoise Gelap */
             --secondary: #E29578;  /* Gold/Mustard Aksen */
-            --bg-color: #FF0000;   /* Warna Background Merah (ini akan ditimpa oleh gambar latar belakang) */
+            --bg-color: #f0f0f0;   /* Warna Fallback jika gambar gagal */
             --text-dark: #2C3E50;
             --white: #ffffff;
         }
@@ -23,15 +24,15 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color); /* Fallback color jika gambar gagal dimuat */
+            background-color: var(--bg-color); 
             color: var(--text-dark);
             
             /* --- Background Bergerak dengan Gambar Alam --- */
-            background-image: url('https://source.unsplash.com/1600x900/?nature,landscape'); /* Ganti dengan URL gambar alam Anda */
-            background-size: 120% 120%; /* Sedikit lebih besar dari layar untuk memungkinkan pergerakan */
+            background-image: url('https://source.unsplash.com/1600x900/?nature,landscape'); 
+            background-size: 120% 120%; 
             background-position: center center;
             background-repeat: no-repeat;
-            animation: moveBackground 30s linear infinite alternate; /* Pergerakan lambat, bolak-balik */
+            animation: moveBackground 30s linear infinite alternate;
         }
 
         @keyframes moveBackground {
@@ -77,14 +78,16 @@
             font-size: 0.9rem;
         }
 
-        /* --- GRID MENU UTAMA --- */
+        /* --- GRID MENU UTAMA (INI KUNCI RESPONSIVE DI HP) --- */
         .menu-grid {
             display: grid;
+            /* Tampilan HP: Otomatis 2 kolom */
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 15px;
             padding: 10px;
         }
 
+        /* Tampilan Laptop: Berubah jadi 5 kolom */
         @media (min-width: 992px) {
             .menu-grid {
                 grid-template-columns: repeat(5, 1fr);
@@ -219,9 +222,10 @@
             color: var(--primary);
         }
 
-        /* --- STYLE KHUSUS UNTUK SUB-MENU MATERI --- */
+        /* --- STYLE SUB-MENU MATERI (RESPONSIVE) --- */
         .submenu-grid {
             display: grid;
+            /* Tampilan HP: Otomatis 1 kolom */
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 30px;
@@ -295,9 +299,10 @@
             color: white;
         }
 
-        /* --- STYLE TIM --- */
+        /* --- STYLE TIM (RESPONSIVE) --- */
         .team-grid {
             display: grid;
+            /* Tampilan HP: Otomatis 1 kolom */
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-top: 20px;
@@ -382,7 +387,7 @@
                  <div class="menu-card" onclick="openPage('page-uas')">
                     <div class="menu-icon">🎓</div>
                     <div class="menu-title">Evaluasi Akhir Semester</div>
-                    <div class="menu-arab">الاِخْتِبَارُ النِّهَائِيُّ</div>
+                    <div class="menu-arab">الاِخْتِبَAR_ النِّهَائِيُّ</div>
                 </div>
                 <div class="menu-card" onclick="openPage('page-tim')">
                     <div class="menu-icon">👥</div>
@@ -441,7 +446,7 @@
                         <div class="icon-box">🗣️</div>
                         <div class="text-group">
                             <span class="title">Percakapan</span>
-                            <span class="arab-subtitle">الْحِوَارُ</span>
+                            <span class="arab-subtitle">الْحِوَAR_</span>
                         </div>
                     </a>
                     <a href="https://drive.google.com/file/d/1ZcctFIlR7Wro5OaB_0c44x4hc6ejiyVA/view?usp=sharing" target="_blank" class="btn-materi">
@@ -528,7 +533,7 @@
                         <div class="icon-box">🧩</div>
                         <div class="text-group">
                             <span class="title">Quiz Interaktif</span>
-                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                            <span class="arab-subtitle">الِاخْتِبَAR_</span>
                         </div>
                     </a>
                 </div>
@@ -561,14 +566,14 @@
                         <div class="icon-box">🗣️</div>
                         <div class="text-group">
                             <span class="title">Hiwar dan Latihan</span>
-                            <span class="arab-subtitle">الْحِوَارُ وَالتَّدْرِيْبَاتُ</span>
+                            <span class="arab-subtitle">الْحِوَAR_ وَالتَّدْرِيْبَاتُ</span>
                         </div>
                     </a>
                     <a href="https://wayground.com/admin/quiz/68ef500bc6a73847ccb626d5" target="_blank" class="btn-materi">
                         <div class="icon-box">🧩</div>
                         <div class="text-group">
                             <span class="title">Quiz</span>
-                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                            <span class="arab-subtitle">الِاخْتِبَAR_</span>
                         </div>
                     </a>
                 </div>
@@ -594,7 +599,7 @@
                         <div class="icon-box">📖</div>
                         <div class="text-group">
                             <span class="title">'ibaaroh</span>
-                            <span class="arab-subtitle">عِبَارَةٌ</span>
+                            <span class="arab-subtitle">عِبَARَÉٌ</span>
                         </div>
                     </a>
                     <a href="https://drive.google.com/file/d/1fX4Elqq9j5fB8eOZEfjgq4oQza9Vh4sx/view?usp=sharing" target="_blank" class="btn-materi">
@@ -608,7 +613,7 @@
                         <div class="icon-box">🧩</div>
                         <div class="text-group">
                             <span class="title">Quiz</span>
-                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                            <span class="arab-subtitle">الِاخْتِبَAR_</span>
                         </div>
                     </a>
                 </div>
@@ -641,14 +646,14 @@
                         <div class="icon-box">🗣️</div>
                         <div class="text-group">
                             <span class="title">Percakapan</span>
-                            <span class="arab-subtitle">الْحِوَارُ</span>
+                            <span class="arab-subtitle">الْحِوَAR_</span>
                         </div>
                     </a>
                     <a href="https://abrohman001.my.canva.site/latihansoal-kelas-8-bahasa-arab" target="_blank" class="btn-materi">
                         <div class="icon-box">🧩</div>
                         <div class="text-group">
                             <span class="title">Quiz Interaktif</span>
-                            <span class="arab-subtitle">الِاخْتِبَارُ</span>
+                            <span class="arab-subtitle">الِاخْتِبَAR_</span>
                         </div>
                     </a>
                 </div>
